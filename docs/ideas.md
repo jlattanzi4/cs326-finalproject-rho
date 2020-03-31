@@ -1,19 +1,19 @@
 Team: Rho
 
-Application: Gainz Balance
+Application: Audio Booth
 
 Team Overview: 
 Patrick Goss 
-	pgoss
+pgoss
 Joseph Lattanzi 
-	Jlattanzi4
+Jlattanzi4
 John Eberhardt
-	jhmeberhardt
+jhmeberhardt
 	
 Innovative Idea:
-	Unlike traditional calorie trackers, we are going to create a web application to track calories specifically for people looking to gain lean muscle mass. Similar to apps such as myFitnessPal (UA), we will be creating a calorie tracker. Yet, myFitnessPal is aimed towards people trying to lose weight, while we will be creating an application for people aiming to gain more muscle mass. On top of this, we aim to create an aesthetically pleasing interface, whereas many other calorie trackers are bare-bones and not easy to work with.
+	We are going to create a web application where musical artists can post their work publicly. Unlike traditional music applications, this site will be specifically to hear from other people what they think about the song. Apps such as Apple Music, Spotify, and SoundCloud only offer a five-stars rating to rate the song. Our website will differ because it allows the artist to get their songs out there while maintaining more meaningful feedback from the people that are listening to the song. While it will have similarities to other music applications, our app will be mainly focused on direct song critique to artists instead of promotion.
+	
 
 Important Components:
-	The main component of our final project is a calorie tracker. Users will enter the food they eat into our web application, specifying the food name, calories per serving, number of servings, as well as the macronutrients contained in the food itself. There will be sections to enter the food; breakfast, lunch, dinner, snacks, etc. There will also be a section for workouts, where users can simply put their workout and how many calories were burned, which will factor into their overall calories for the day.
-	Another functionality that our project will have is that users will be able to specify how much weight they are looking to gain, and over what period of time. We will implement an equation to then find how many calories per day that specific user needs to eat in order to attain their goal. This can be tracked through the “weight” section, where users can enter their current weight and track their progress as they move along. 
-
+	There will be two types of users that will be classified, artists and consumers. When an artist posts their work, both artists and consumers will be able to listen, rate, and comment on the post. The rating scale will be on a scale of 1-10, and the artist will be able to see how many people rated it, and what the average rating is. On top of this, users will be able to leave critiques on the artist’s work, things that the artist can work on in the future and hopefully better before their next post!
+	Artists will each have their own profile, housing all of their posts, as well as a cumulative average of their ratings. Profiles will almost act as albums or portfolios, where if a consumer likes the artist’s work, they can go to their page and check out the rest of their work. Users will be able to make comments specific to a point in a song, helping the artists further. Audio files will be links to Youtube, meaning the artist will have to have it posted there and then link it in. The site will also contain categories for song and artist types.
