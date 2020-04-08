@@ -3,6 +3,33 @@
 * Patrick Goss
 * Jack Eberhardt
 
+# Data Interactions
+
+Our main data objects will be:
+* Users
+* Posts
+* Comments
+* Likes
+* Followers/Following
+* Featured Song/Artist
+
+## Users
+Users represent users of Audio Booth. They will have permissions to permit them to do certain things, as well as having a type (Artist or Consumer). Users will be able to edit their own information such as email, name, and avitar, and view other users page.
+
+## Posts
+Posts will be what artists are allowed to do on the home screen. They will be able to give a small description, as well as post a link to youtube, which will be embedded into the HTML so the youtube thumbnail will pop up and the video can be played on the local page. 
+
+## Comments
+Comments will be a section below the posts where consumers and artists alike will be able to critique the artist's post. This is going to be a very active section, where users can post comments, and other users can reply in a small thread, or post a new comment. Most of the action on the site will happen in the comments section.
+
+## Likes
+Each post will have a like button, where artists and consumers can show their liking for an artists song by liking their post, giving the artist a quick gauge of how well they did.
+
+## Followers/Following
+Consumers and Artists will be able to "Follow" each other, and these connections will be able to be seen by the users. These can be seen on both the profile page as well as the home page, seen as counts.
+
+## Featured Song/Artist
+The home page hosts a "Featured" section, where there will be a featured song and a featured artists for consumers and other artists to check out if they feel like it. We are aiming to have these be popular songs and popular artists so that users will be inclined to listen, critique, and follow.
 
 # Login
 
