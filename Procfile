@@ -1,1 +1,1 @@
-web: node proj-server.js
+web:node proj-server.js

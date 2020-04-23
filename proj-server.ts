@@ -4,4 +4,4 @@ import { ProjRouting } from './proj-routing';
 
 const theServer = new ProjRouting();
 
-theServer.listen(8080);
+theServer.listen(process.env.PORT);
