@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    start: "wed: node proj-server.js"
+    "start": "node proj-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
