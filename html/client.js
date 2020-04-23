@@ -1,4 +1,4 @@
-const url = "https://desolate-forest-61979.herokuapp.com"; // NOTE NEW URL
+const url = "https://pure-thicket-80651.herokuapp.com"; // NOTE NEW URL
 
 function counterCreate() {
     (async () => {
