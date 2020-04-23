@@ -1,0 +1,27 @@
+{
+  "name": "cs326-finalproject-rho",
+  "version": "1.0.0",
+  "description": "",
+  "main": "proj-routing.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlattanzi4/cs326-finalproject-rho.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlattanzi4/cs326-finalproject-rho/issues"
+  },
+  "homepage": "https://github.com/jlattanzi4/cs326-finalproject-rho#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^3.8.3"
+  }
+}
