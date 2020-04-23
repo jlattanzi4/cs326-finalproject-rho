@@ -1,4 +1,4 @@
-const url = "http://localhost:8080"; // NOTE NEW URL
+const url = "https://still-peak-39718.herokuapp.com/"; // NOTE NEW URL
 
 function counterCreate() {
     (async () => {
