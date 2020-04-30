@@ -16,7 +16,7 @@ export class ProjRouting {
 
         this.router.use((request, response, next) => {
             response.header('Content-Type','application/json');
-            response.header('Access-Control-Allow-Origin', '*');
+            //response.header('Access-Control-Allow-Origin', '*');
             response.header('Access-Control-Allow-Headers', '*');
             next();
         });
