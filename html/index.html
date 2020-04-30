@@ -21,12 +21,12 @@
 
     <body>
         <div class="topnav">
-            <a class="active" href="#index">Home</a>
+            <a class="active" href="#home">Home</a>
             <a class="#profile" href="profile.html">Profile</a>
             <div class="search-container">
                 <form action="/action_page.php">
                   <input type="text" placeholder="Search.." name="search">
-                  <button type="submit">Submit</button>
+                  <button type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -74,16 +74,21 @@
                                 <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                     <div class="form-group">
                                         <label class="sr-only" for="message">post</label>
-                                        <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                                        <textarea class="form-control" id="message" rows="3" placeholder="Talk about your work!"></textarea>
                                     </div>
-    
+                                    
+                                    <div class="form-group">
+                                        <label class="sr-only" for="message">url</label>
+                                        <textarea class="form-control" id="url" rows="1" placeholder="Embedded Youtube URL"></textarea>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="btn-toolbar justify-content-between">
                                 <div class="btn-group">
-                                    <button type="submit" class="btn btn-primary">Share</button>
-                                    <button onclick="userRead()" class="btn btn-primary">Read</button>
+                                    <button type="submit" onclick="postCreate()" class="btn btn-primary">Share</button>
                                 </div>
+                                <p id='error_post'></p>
                             </div>
                         </div>
                     </div>
