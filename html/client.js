@@ -39,7 +39,7 @@ function postCreate(){
 		const resp = await postData(newURL, data);
 		const j = await resp.json();
 
-		if(postContent != "" && youtubeUrl != ""){
+		if(j['result'] !== 'error'){
 			
 			var div = document.createElement('div');
 			div.setAttribute('class', 'card gedf-card');
