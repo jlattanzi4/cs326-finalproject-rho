@@ -1,4 +1,4 @@
-const url = "https://desolate-forest-61979.herokuapp.com/users";
+const url = "https://desolate-forest-61979.herokuapp.com/counter";
 
 //const url = "http://localhost:8080"; // NOTE NEW URL
 
