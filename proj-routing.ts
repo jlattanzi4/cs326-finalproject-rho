@@ -27,10 +27,10 @@ export class ProjRouting {
 
         this.server.use('/', express.static('./html'));
         this.server.use(express.json());
-        this.router.post('/users/:userID/create', this.createHandler.bind(this));
-        this.router.post('/users/:userID/read', [this.errorHandler.bind(this),this.readHandler.bind(this)]);
-        this.router.post('/users/:userID/update', [this.errorHandler.bind(this),this.updateHandler.bind(this)]);
-        this.router.post('/users/:userID/delete', [this.errorHandler.bind(this),this.deleteHandler.bind(this)]);
+        this.router.post('/users/:userId/create', this.createHandler.bind(this));
+        this.router.post('/users/:userId/read', [this.errorHandler.bind(this),this.readHandler.bind(this)]);
+        this.router.post('/users/:userId/update', [this.errorHandler.bind(this),this.updateHandler.bind(this)]);
+        this.router.post('/users/:userId/delete', [this.errorHandler.bind(this),this.deleteHandler.bind(this)]);
     
         this.router.post('*', async (request, response) => {
             response.send(JSON.stringify({'result' : "command-not-found"}));
