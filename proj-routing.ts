@@ -1,3 +1,5 @@
+import {request} from "https";
+
 let http = require('http');
 let url = require('url');
 let express = require('express');
@@ -7,7 +9,7 @@ export class ProjRouting {
     private theDatabase;
 
     private server = express();
-    private port = 8080;
+    //private port = 8080;
     private router = express.Router();
 
     constructor(db){
@@ -16,10 +18,10 @@ export class ProjRouting {
 
         this.router.use((request, response, next) => {
             response.header('Content-Type','application/json');
-            //response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/index.html');
-            response.header('Access-Control-Allow-Origin', "*");
+            //response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/create');
+            response.header('Access-Control-Allow-Origin', '*');
             response.header('Access-Control-Allow-Headers', '*');
-            response.header('Access-Control-Allow-Credentials')
+            response.header('Access-Control-Allow-Credentials');
             next();
         });
 

@@ -75,7 +75,7 @@ function postCreate(){
 				</div>
 			`;
 
-			console.log(div)
+			console.log(div);
 		
 		document.getElementById("makePost").after(div);
 		}
