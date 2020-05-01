@@ -10,6 +10,7 @@ export class ProjRouting {
 
     private server = express();
     //private port = 8080;
+    private port = process.env.PORT;
     private router = express.Router();
 
     constructor(db){
