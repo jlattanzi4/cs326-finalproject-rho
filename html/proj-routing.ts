@@ -9,8 +9,6 @@ export class ProjRouting {
     private server = express();
     private port = 8080;
     private router = express.Router();
-    private xhr = new XMLHttpRequest()
-
 
     constructor(db){
     

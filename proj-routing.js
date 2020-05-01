@@ -45,7 +45,6 @@ var ProjRouting = /** @class */ (function () {
         this.server = express();
         this.port = 8080;
         this.router = express.Router();
-        this.xhr = new XMLHttpRequest();
         this.theDatabase = db;
         this.router.use(function (request, response, next) {
             response.header('Content-Type', 'application/json');
