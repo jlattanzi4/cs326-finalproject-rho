@@ -10,7 +10,7 @@ export class ProjRouting {
     private port = 8080;
     private router = express.Router();
     private xhr = new XMLHttpRequest()
-    
+
 
     constructor(db){
     
@@ -38,7 +38,7 @@ export class ProjRouting {
             response.send(JSON.stringify({'result' : "command-not-found"}));
         });
 
-        this.server.use('/user', this.router);
+        this.server.use('/users', this.router);
 
     }
 
