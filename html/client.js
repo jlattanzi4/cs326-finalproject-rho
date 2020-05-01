@@ -1,7 +1,5 @@
 const url = "https://desolate-forest-61979.herokuapp.com";
 
-
-
 //const url = "http://localhost:8080"; // NOTE NEW URL
 
 function userCreate() {

@@ -26,12 +26,12 @@ export class ProjRouting {
 
         this.server.use('/', express.static('./html'));
         this.server.use(express.json());
-        this.router.get('/users/create', this.createHandler.bind(this));
-        this.router.get('/users/read', [this.errorHandler.bind(this),
+        this.router.get('/users/:userID/create', this.createHandler.bind(this));
+        this.router.get('/users/:userID/read', [this.errorHandler.bind(this),
             this.readHandler.bind(this)]);
-        this.router.get('/users/update', [this.errorHandler.bind(this),
+        this.router.get('/users/:userID/update', [this.errorHandler.bind(this),
             this.updateHandler.bind(this)]);
-        this.router.get('/users/delete', [this.errorHandler.bind(this),
+        this.router.get('/users/:userID/delete', [this.errorHandler.bind(this),
             this.deleteHandler.bind(this)]);
     
         this.router.get('*', async (request, response) => {
@@ -78,7 +78,7 @@ export class ProjRouting {
     await this.theDatabase.put(name, 0);
     response.write(JSON.stringify({'result' : 'created',
                         'name' : name,
-                        'value' : 0 }));
+                        'value' : "User Created" }));
     response.end();
     }
 
