@@ -36,7 +36,7 @@ export class ProjRouting {
             response.send(JSON.stringify({'result' : "command-not-found"}));
         });
 
-        this.server.use('/users', this.router);
+        this.server.use('/counter', this.router);
 
     }
 

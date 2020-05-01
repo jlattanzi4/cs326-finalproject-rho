@@ -68,7 +68,7 @@ var ProjRouting = /** @class */ (function () {
                 return [2 /*return*/];
             });
         }); });
-        this.server.use('/users', this.router);
+        this.server.use('/counter', this.router);
     }
     ProjRouting.prototype.errorHandler = function (request, response, next) {
         return __awaiter(this, void 0, void 0, function () {
