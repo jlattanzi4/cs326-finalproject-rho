@@ -37,7 +37,7 @@ function postCreate(){
 		const newURL = url + "/users/" + name + "/create";
 		console.log("postCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);
-		const j = await resp.json();
+		const j = await resp.text();
 
 		if(j['result'] !== 'error'){
 			
