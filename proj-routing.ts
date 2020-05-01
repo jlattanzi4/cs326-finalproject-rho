@@ -9,7 +9,7 @@ export class ProjRouting {
     private theDatabase;
 
     private server = express();
-    private port = 8080;
+    //private port = 8080;
     private router = express.Router();
 
     constructor(db){
