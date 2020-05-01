@@ -2,7 +2,7 @@ export class Database {
 
     private MongoClient = require('mongodb').MongoClient;
     //private secrets = require('./secrets.json');
-    private uri = "mongodb+srv://rho:<cs326>@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority"
+    private uri = "mongodb+srv://rho:<cs326>@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority?authSource=admin";
     //private uri = this.secrets.uri;
     private client;
     private collectionName : string; // do i need something here
