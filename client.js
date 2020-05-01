@@ -1,6 +1,6 @@
-//const url = "https://desolate-forest-61979.herokuapp.com/counter";
+const url = "https://desolate-forest-61979.herokuapp.com/counter";
 
-const url = "http://localhost:8080/counter"; // NOTE NEW URL
+//const url = "http://localhost:8080/counter"; // NOTE NEW URL
 
 function userCreate() {
     (async () => {
