@@ -60,7 +60,7 @@ var ProjRouting = /** @class */ (function () {
         this.router.post('/users/:userID/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
         this.router.post('/users/:userID/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
         this.router.post('/users/:userID/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
-        this.router.get('*', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+        this.router.post('*', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 response.send(JSON.stringify({ 'result': "command-not-found" }));
                 return [2 /*return*/];

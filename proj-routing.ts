@@ -32,7 +32,7 @@ export class ProjRouting {
         this.router.post('/users/:userID/update', [this.errorHandler.bind(this),this.updateHandler.bind(this)]);
         this.router.post('/users/:userID/delete', [this.errorHandler.bind(this),this.deleteHandler.bind(this)]);
     
-        this.router.get('*', async (request, response) => {
+        this.router.post('*', async (request, response) => {
             response.send(JSON.stringify({'result' : "command-not-found"}));
         });
 
