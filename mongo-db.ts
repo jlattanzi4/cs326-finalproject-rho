@@ -30,7 +30,7 @@ export class Database {
 
         let db = this.client.db(this.dbName);
         let collection = db.collection(this.collectionName);
-        let result = await collection.findOne({'name': key})
+        let result = await collection.findOne({'name': key});
         
         console.log("get: returned " + JSON.stringify(result));
         if (result) {
@@ -44,7 +44,7 @@ export class Database {
         console.log("delete: key = " + key);
         let db = this.client.db(this.dbName);
         let collection = db.collection(this.collectionName);
-        let result = await collection.deleteOne({'name': key})
+        let result = await collection.deleteOne({'name': key});
 
         console.log('del: deleted ' + JSON.stringify(result));
         }
