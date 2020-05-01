@@ -44,6 +44,7 @@ var ProjRouting = /** @class */ (function () {
         var _this = this;
         this.server = express();
         //private port = 8080;
+        this.port = process.env.PORT;
         this.router = express.Router();
         this.theDatabase = db;
         this.router.use(function (request, response, next) {
@@ -56,10 +57,10 @@ var ProjRouting = /** @class */ (function () {
         });
         this.server.use('/', express.static('./html'));
         this.server.use(express.json());
-        this.router.post('/users/:userID/create', this.createHandler.bind(this));
-        this.router.post('/users/:userID/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
-        this.router.post('/users/:userID/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
-        this.router.post('/users/:userID/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
+        this.router.post('/users/:userId/create', this.createHandler.bind(this));
+        this.router.post('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
+        this.router.post('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
+        this.router.post('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
         this.router.post('*', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 response.send(JSON.stringify({ 'result': "command-not-found" }));
