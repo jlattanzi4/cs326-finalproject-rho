@@ -41,7 +41,7 @@ var Database = /** @class */ (function () {
         var _this = this;
         this.MongoClient = require('mongodb').MongoClient;
         //private secrets = require('./secrets.json');
-        this.uri = "mongodb+srv://rho:<cs326>@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority?authSource=admin";
+        this.uri = "mongodb+srv://rho:cs326@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority?authSource=admin";
         this.dbName = "ab";
         this.collectionName = collectionName;
         this.client = new this.MongoClient(this.uri, { useNewUrlParser: true });
