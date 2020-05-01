@@ -6,4 +6,4 @@ import { Database } from './mongo-db';
 const theDatabase = new Database('jlattanzi4');
 const theServer = new ProjRouting(theDatabase);
 
-theServer.listen(process.env.PORT);
+theServer.listen(process.env.PORT || 8080);
