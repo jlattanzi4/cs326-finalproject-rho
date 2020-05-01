@@ -40,35 +40,57 @@ var http = require('http');
 var url = require('url');
 var express = require('express');
 var ProjRouting = /** @class */ (function () {
-    function ProjRouting() {
+    function ProjRouting(db) {
         var _this = this;
         this.server = express();
         this.port = 8080;
         this.router = express.Router();
+        this.xhr = new XMLHttpRequest();
+        this.theDatabase = db;
         this.router.use(function (request, response, next) {
             response.header('Content-Type', 'application/json');
-            response.header('Access-Control-Allow-Origin', '*');
+            response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/index.html');
             response.header('Access-Control-Allow-Headers', '*');
+            response.header('Access-Control-Allow-Credentials');
             next();
         });
         this.server.use('/', express.static('./html'));
         this.server.use(express.json());
-        // Set a single handler for a route.
-        this.router.post('/users/create', this.createHandler.bind(this));
-        // Set multiple handlers for a route, in sequence.
-        this.router.post('/users/read', this.readHandler.bind(this));
-        this.router.post('/users/update', this.updateHandler.bind(this));
-        this.router.post('/users/delete', this.deleteHandler.bind(this));
-        // Set a fall-through handler if nothing matches.
-        this.router.post('*', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+        this.router.get('/users/:userID/create', this.createHandler.bind(this));
+        this.router.get('/users/:userID/read', [this.errorHandler.bind(this),
+            this.readHandler.bind(this)]);
+        this.router.get('/users/:userID/update', [this.errorHandler.bind(this),
+            this.updateHandler.bind(this)]);
+        this.router.get('/users/:userID/delete', [this.errorHandler.bind(this),
+            this.deleteHandler.bind(this)]);
+        this.router.get('*', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                response.send(JSON.stringify({ "result": "command-not-found" }));
+                response.send(JSON.stringify({ 'result': "command-not-found" }));
                 return [2 /*return*/];
             });
         }); });
-        // Start up the user endpoint at '/user'.
-        this.server.use('/user', this.router);
+        this.server.use('/users', this.router);
     }
+    ProjRouting.prototype.errorHandler = function (request, response, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            var value;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.theDatabase.isFound(request.params['userId'] + "-" + request.query.name)];
+                    case 1:
+                        value = _a.sent();
+                        if (!value) {
+                            response.write(JSON.stringify({ 'result': 'error' }));
+                            response.end();
+                        }
+                        else {
+                            next();
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     ProjRouting.prototype.createHandler = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -125,12 +147,18 @@ var ProjRouting = /** @class */ (function () {
     ProjRouting.prototype.createUser = function (name, response) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log("creating user named '" + name + "'");
-                response.write(JSON.stringify({ 'result': 'created',
-                    'name': name,
-                    'value': 0 }));
-                response.end();
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        console.log("creating user named '" + name + "'");
+                        return [4 /*yield*/, this.theDatabase.put(name, 0)];
+                    case 1:
+                        _a.sent();
+                        response.write(JSON.stringify({ 'result': 'created',
+                            'name': name,
+                            'value': "User Created" }));
+                        response.end();
+                        return [2 /*return*/];
+                }
             });
         });
     };
@@ -145,33 +173,49 @@ var ProjRouting = /** @class */ (function () {
     };
     ProjRouting.prototype.readUser = function (name, response) {
         return __awaiter(this, void 0, void 0, function () {
+            var value;
             return __generator(this, function (_a) {
-                response.write(JSON.stringify({ 'result': 'read',
-                    'name': 'Joe',
-                    'value': 'lattanzi.joseph@gmail.com' }));
-                response.end();
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.theDatabase.get(name)];
+                    case 1:
+                        value = _a.sent();
+                        response.write(JSON.stringify({ 'result': 'read',
+                            'name': name,
+                            'value': value }));
+                        response.end();
+                        return [2 /*return*/];
+                }
             });
         });
     };
     ProjRouting.prototype.updateUser = function (name, value, response) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                response.write(JSON.stringify({ 'result': 'updated',
-                    'name': name,
-                    'value': value }));
-                response.end();
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.theDatabase.put(name, value)];
+                    case 1:
+                        _a.sent();
+                        response.write(JSON.stringify({ 'result': 'updated',
+                            'name': name,
+                            'value': value }));
+                        response.end();
+                        return [2 /*return*/];
+                }
             });
         });
     };
     ProjRouting.prototype.deleteUser = function (name, response) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                response.write(JSON.stringify({ 'result': 'deleted',
-                    'value': name }));
-                response.end();
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.theDatabase.del(name)];
+                    case 1:
+                        _a.sent();
+                        response.write(JSON.stringify({ 'result': 'deleted',
+                            'value': name }));
+                        response.end();
+                        return [2 /*return*/];
+                }
             });
         });
     };
