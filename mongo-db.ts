@@ -5,7 +5,7 @@ export class Database {
     private uri = "mongodb+srv://rho:cs326@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority?authSource=admin";
     //private uri = this.secrets.uri;
     private client;
-    private collectionName : string = "user"; // do i need something here
+    private collectionName : string; // do i need something here
     private dbName : string = "ab";
 
 
