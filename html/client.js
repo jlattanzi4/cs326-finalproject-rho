@@ -155,7 +155,8 @@ async function postData(url, data) {
                                  cache: 'no-cache',
                                  credentials: 'same-origin',
                                  headers: {
-                                     'Content-Type': 'application/json'
+									 'Content-Type': 'application/json',
+									 'Accept': 'application/json'
                                  },
                                  redirect: 'follow',
                                  body: JSON.stringify(data)
