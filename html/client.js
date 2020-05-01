@@ -28,11 +28,15 @@ function userCreate() {
 
 function postCreate(){
 	(async () => {
-		let postContent = document.getElementById("message");
-		let youtubeUrl = document.getElementById("url");
+		let postContent = document.getElementById("message").value;
+		let youtubeUrl = document.getElementById("url").value;
+		let songTitle = document.getElementById("songTitle").value;
+		let name = document.getElementById("name").value;
+		var d = new Date();
+		let timeOfPost = d.getHours() + ":" + d.getMinutes();
 
-		const data = {"Post Content": postContent, "Link": youtubeUrl};
-		const newURL = url + "/post/create";
+		const data = {"Post Content": postContent, "Link": youtubeUrl, "Title": songTitle, "Name": name, "Time": timeOfPost};
+		const newURL = url + "/user/create";
 		console.log("postCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);
 		const j = await resp.json();
@@ -40,25 +44,26 @@ function postCreate(){
 		if(postContent != "" && youtubeUrl != ""){
 			
 			var div = document.createElement('div');
+			div.setAttribute('class', 'card gedf-card');
 			div.innerHTML = `
-			<div class="card gedf-card"><div class="card-header">
+				<div class="card-header">
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="mr-2">
 								<img class="rounded-circle" width="45" src="images/profilephoto.png" alt="">
 							</div>
 							<div class="ml-2">
-								<div class="h5 m-0">@TimHorton</div>
-								<div class="h7 text-muted">Tim Horton</div>
+								<div class="h5 m-0">@username</div>
+								<div class="h7 text-muted">${name}</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
 				<div class="card-body">
-					<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>15 min ago</div>
+					<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>${timeOfPost}</div>
 					<a class="card-link" href="#">
-						<h5 class="card-title">Song1 - Tim Horton</h5>
+						<h5 class="card-title">${songTitle}</h5>
 					</a>
 
 					<p class="card-text">
@@ -70,12 +75,14 @@ function postCreate(){
 					<a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
 					<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 				</div>
-			</div>`
+			`;
+
+			console.log(div)
 		
-		document.getElementById("card gedf-card").prependChild(div);
+		document.getElementById("makePost").after(div);
 		}
 		else{
-			document.getElementById("error_post").innerHTML = "Please enter all fields"
+			document.getElementById("error_post").innerHTML = "Please enter all fields";
 		}
 	})();
 }
