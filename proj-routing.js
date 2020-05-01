@@ -43,14 +43,15 @@ var ProjRouting = /** @class */ (function () {
     function ProjRouting(db) {
         var _this = this;
         this.server = express();
-        this.port = 8080;
+        //private port = 8080;
         this.router = express.Router();
         this.theDatabase = db;
         this.router.use(function (request, response, next) {
             response.header('Content-Type', 'application/json');
-            response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/index.html');
+            //response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/create');
+            //response.header('Access-Control-Allow-Origin', '*');
             response.header('Access-Control-Allow-Headers', '*');
-            response.header('Access-Control-Allow-Credentials');
+            //response.header('Access-Control-Allow-Credentials');
             next();
         });
         this.server.use('/', express.static('./html'));
