@@ -53,7 +53,7 @@ export class ProjRouting {
         
     private async createHandler(request, response) : Promise<void> {
     console.log(request.params['userId']);
-    await this.createUser(request.params['userId']+"-"+request.body.name, response);
+    await this.createUser(request.params['userId'], response);
     }
 
     private async readHandler(request, response): Promise<void> {

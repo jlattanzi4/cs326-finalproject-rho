@@ -95,7 +95,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log(request.params['userId']);
-                        return [4 /*yield*/, this.createUser(request.params['userId'] + "-" + request.body.name, response)];
+                        return [4 /*yield*/, this.createUser(request.params['userId'], response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
