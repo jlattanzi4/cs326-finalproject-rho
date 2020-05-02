@@ -66,7 +66,7 @@ export class ProjRouting {
     private async readHandler(request, response): Promise<void> {
     await this.readUser(request.params['userId']+"-"+request.body.name, response);
     }
-ß
+    
     private async updateHandler(request, response) : Promise<void> {
     await this.updateUser(request.params['userId']+"-"+request.body.name, request.body.value, response);
     }
