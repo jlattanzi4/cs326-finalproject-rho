@@ -26,7 +26,7 @@ function userCreate() {
 
 function postCreate(){
 	(async () => {
-		let postContent = document.getElementById("message").value;
+		let postContent = document.getElementById("postContent").value;
 		let youtubeUrl = document.getElementById("url").value;
 		let songTitle = document.getElementById("songTitle").value;
 		let name = document.getElementById("name").value;
@@ -34,7 +34,7 @@ function postCreate(){
 		let timeOfPost = d.getHours() + ":" + d.getMinutes();
 
 		const data = {"Post Content": postContent, "Link": youtubeUrl, "Title": songTitle, "Name": name, "Time": timeOfPost};
-		const newURL = url + "/users/" + name + "/create";
+		const newURL = url + "/posts/" + name + "/create";
 		console.log("postCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);
 		const j = await resp.text();
@@ -78,6 +78,7 @@ function postCreate(){
 		console.log(div);
 		
 		document.getElementById("makePost").after(div);
+		document.getElementById("makePost").reset();
 		}
 		else{
 			document.getElementById("error_post").innerHTML = "Please enter all fields";

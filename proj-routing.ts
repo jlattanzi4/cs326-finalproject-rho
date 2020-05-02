@@ -29,6 +29,7 @@ export class ProjRouting {
         this.server.use('/', express.static('./html'));
         this.server.use(express.json());
         this.router.post('/users/:userId/create', this.createHandler.bind(this));
+        this.router.post('/posts/:userId/create', this.createPostHandler.bind(this));
         this.router.post('/users/:userId/read', [this.errorHandler.bind(this),this.readHandler.bind(this)]);
         this.router.post('/users/:userId/update', [this.errorHandler.bind(this),this.updateHandler.bind(this)]);
         this.router.post('/users/:userId/delete', [this.errorHandler.bind(this),this.deleteHandler.bind(this)]);
@@ -56,10 +57,15 @@ export class ProjRouting {
     await this.createUser(request.params['userId'], response);
     }
 
+    private async createPostHandler(request, response): Promise<void> {
+        console.log(request.params['userId']);
+        await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response);
+    }
+
     private async readHandler(request, response): Promise<void> {
     await this.readUser(request.params['userId']+"-"+request.body.name, response);
     }
-
+ß
     private async updateHandler(request, response) : Promise<void> {
     await this.updateUser(request.params['userId']+"-"+request.body.name, request.body.value, response);
     }
@@ -80,6 +86,17 @@ export class ProjRouting {
                         'value' : "User Created" }));
     response.end();
     }
+
+    public async createPost(name: string, songTitle: string, postContent: string, url: string, response) : Promise<void> {
+        console.log("creating user named '" + name + "'");
+        await this.theDatabase.put(name, songTitle, postContent, url);
+        response.write(JSON.stringify({'result' : 'created',
+                            'name' : name,
+                            'songTitle' : songTitle,
+                            'postContent': postContent,
+                            'url' : url }));
+        response.end();
+        }
 
     public async errorUser(name: string, response) : Promise<void> {
     response.write(JSON.stringify({'result': 'error'}));

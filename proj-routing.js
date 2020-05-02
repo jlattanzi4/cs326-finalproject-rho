@@ -58,6 +58,7 @@ var ProjRouting = /** @class */ (function () {
         this.server.use('/', express.static('./html'));
         this.server.use(express.json());
         this.router.post('/users/:userId/create', this.createHandler.bind(this));
+        this.router.post('/posts/:userId/create', this.createPostHandler.bind(this));
         this.router.post('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
         this.router.post('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
         this.router.post('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
@@ -96,6 +97,20 @@ var ProjRouting = /** @class */ (function () {
                     case 0:
                         console.log(request.params['userId']);
                         return [4 /*yield*/, this.createUser(request.params['userId'], response)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProjRouting.prototype.createPostHandler = function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(request.params['userId']);
+                        return [4 /*yield*/, this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -154,6 +169,26 @@ var ProjRouting = /** @class */ (function () {
                         response.write(JSON.stringify({ 'result': 'created',
                             'name': name,
                             'value': "User Created" }));
+                        response.end();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProjRouting.prototype.createPost = function (name, songTitle, postContent, url, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log("creating user named '" + name + "'");
+                        return [4 /*yield*/, this.theDatabase.put(name, songTitle, postContent, url)];
+                    case 1:
+                        _a.sent();
+                        response.write(JSON.stringify({ 'result': 'created',
+                            'name': name,
+                            'songTitle': songTitle,
+                            'postContent': postContent,
+                            'url': url }));
                         response.end();
                         return [2 /*return*/];
                 }
