@@ -184,7 +184,7 @@ var ProjRouting = /** @class */ (function () {
                     case 0:
                         console.log("creating user named '" + name + "'");
                         value = [{ 'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url }];
-                        return [4 /*yield*/, this.theDatabase.put(name, songTitle, postContent, url)];
+                        return [4 /*yield*/, this.theDatabase.put(name, value)];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',

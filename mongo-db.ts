@@ -19,13 +19,11 @@ export class Database {
 	})();
     }
 
-    public async put(key: string, songTitle: string, postContent: string, url: string) : Promise<void> {
-        console.log("put: key = " + key + ", songTitle = " + songTitle);
+    public async put(key: string, value: string) : Promise<void> {
+        console.log("put: key = " + key + ", value = " + value);
         let db = this.client.db(this.dbName);
         let collection = db.collection(this.collectionName);
-        let result = await collection.updateOne({'name' : key}, { $set : [{ 'Song Title' : songTitle},
-                                                                         { 'Post Content' : postContent},
-                                                                         { 'URL' : url}] }, { 'upsert' : true } );
+        let result = await collection.updateOne({'name' : key}, { $set : {'value' : value} }, { 'upsert' : true } );
         console.log("result = " + result);
     }
 
