@@ -110,6 +110,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log(request.params['userId']);
+                        console.log(request.body.songTitle);
                         return [4 /*yield*/, this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response)];
                     case 1:
                         _a.sent();

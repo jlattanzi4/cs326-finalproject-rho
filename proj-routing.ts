@@ -59,6 +59,7 @@ export class ProjRouting {
 
     private async createPostHandler(request, response): Promise<void> {
         console.log(request.params['userId']);
+        console.log(request.body.songTitle)
         await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response);
     }
 
