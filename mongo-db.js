@@ -65,7 +65,7 @@ var Database = /** @class */ (function () {
                         console.log("put: key = " + key + ", value = " + value);
                         db = this.client.db(this.dbName);
                         collection = db.collection(this.collectionName);
-                        return [4 /*yield*/, collection.updateOne({ 'name': key }, { $set: { 'value': value } }, { 'upsert': true })];
+                        return [4 /*yield*/, collection.updateOne({ 'name': key }, { $set: { 'value': JSON.stringify(value[0]) } }, { 'upsert': true })];
                     case 1:
                         result = _a.sent();
                         console.log("result = " + result);

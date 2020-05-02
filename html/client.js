@@ -79,7 +79,7 @@ function postCreate(){
 		
 		document.getElementById("makePost").after(div);
 		//document.getElementById("makePost").reset();
-		var frm = document.getElementById("makePost");
+		var frm = document.getElementById("postForm");
 		console.log(frm);
 		frm.reset();
 		}
