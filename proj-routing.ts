@@ -93,10 +93,7 @@ export class ProjRouting {
         var value = [{'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url}];
         await this.theDatabase.put(name, value);
         response.write(JSON.stringify({'result' : 'created',
-                            'name' : name,
-                            'songTitle' : songTitle,
-                            'postContent': postContent,
-                            'url' : url }));
+                            'value' : value}));
         response.end();
         }
 

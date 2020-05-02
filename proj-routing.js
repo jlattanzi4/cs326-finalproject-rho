@@ -188,10 +188,7 @@ var ProjRouting = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
-                            'name': name,
-                            'songTitle': songTitle,
-                            'postContent': postContent,
-                            'url': url }));
+                            'value': value }));
                         response.end();
                         return [2 /*return*/];
                 }
