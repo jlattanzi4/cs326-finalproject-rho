@@ -148,7 +148,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        return [4 /*yield*/, this.theDatabase.put(name, 0)];
+                        return [4 /*yield*/, this.theDatabase.put(name, 'User Created')];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
