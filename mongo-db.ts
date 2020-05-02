@@ -22,6 +22,7 @@ export class Database {
         console.log("put: key = " + key + ", value = " + value);
         let db = this.client.db(this.dbName);
         let collection = db.collection(this.collectionName);
+        console.log(collection);
         let result = await collection.updateOne({'name' : key}, { $set : { 'value' : value} }, { 'upsert' : true } );
         console.log("result = " + result);
     }
