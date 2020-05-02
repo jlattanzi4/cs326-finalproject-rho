@@ -78,15 +78,20 @@ function postCreate(){
 		console.log(div);
 		
 		document.getElementById("makePost").after(div);
-		//document.getElementById("makePost").reset();
-		var frm = document.getElementById("postForm");
-		console.log(frm);
-		frm.reset();
+		
+		document.eraseText();
 		}
 		else{
 			document.getElementById("error_post").innerHTML = "Please enter all fields";
 			}
 		})();
+}
+
+function eraseText() {
+	document.getElementById("name").value = "";
+	document.getElementById("songTitle").value = "";
+	document.getElementById("postContent").value = "";
+	document.getElementById("url").value = "";
 }
 
 function userRead() {
