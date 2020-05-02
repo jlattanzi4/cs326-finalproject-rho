@@ -79,7 +79,6 @@ function postCreate(){
 		
 		document.getElementById("makePost").after(div);
 		
-		document.eraseText();
 		}
 		else{
 			document.getElementById("error_post").innerHTML = "Please enter all fields";
