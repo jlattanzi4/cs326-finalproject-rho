@@ -78,7 +78,7 @@ function postCreate(){
 		console.log(div);
 		
 		document.getElementById("makePost").after(div);
-		document.getElementById("makePost").reset();
+		//document.getElementById("makePost").reset();
 		}
 		else{
 			document.getElementById("error_post").innerHTML = "Please enter all fields";
