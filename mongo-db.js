@@ -56,16 +56,18 @@ var Database = /** @class */ (function () {
             });
         }); })();
     }
-    Database.prototype.put = function (key, value) {
+    Database.prototype.put = function (key, songTitle, postContent, url) {
         return __awaiter(this, void 0, void 0, function () {
             var db, collection, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log("put: key = " + key + ", value = " + value);
+                        console.log("put: key = " + key + ", songTitle = " + songTitle);
                         db = this.client.db(this.dbName);
                         collection = db.collection(this.collectionName);
-                        return [4 /*yield*/, collection.updateOne({ 'name': key }, { $set: { 'value': JSON.stringify(value[2]) } }, { 'upsert': true })];
+                        return [4 /*yield*/, collection.updateOne({ 'name': key }, { $set: [{ 'Song Title': songTitle },
+                                    { 'Post Content': postContent },
+                                    { 'URL': url }] }, { 'upsert': true })];
                     case 1:
                         result = _a.sent();
                         console.log("result = " + result);

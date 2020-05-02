@@ -66,7 +66,7 @@ export class ProjRouting {
     private async readHandler(request, response): Promise<void> {
     await this.readUser(request.params['userId']+"-"+request.body.name, response);
     }
-    
+
     private async updateHandler(request, response) : Promise<void> {
     await this.updateUser(request.params['userId']+"-"+request.body.name, request.body.value, response);
     }
@@ -91,7 +91,7 @@ export class ProjRouting {
     public async createPost(name: string, songTitle: string, postContent: string, url: string, response) : Promise<void> {
         console.log("creating user named '" + name + "'");
         var value = [{'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url}];
-        await this.theDatabase.put(name, value);
+        await this.theDatabase.put(name, songTitle, postContent, url);
         response.write(JSON.stringify({'result' : 'created',
                             'value' : value}));
         response.end();
