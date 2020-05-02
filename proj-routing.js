@@ -178,13 +178,13 @@ var ProjRouting = /** @class */ (function () {
     };
     ProjRouting.prototype.createPost = function (name, songTitle, postContent, url, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var post;
+            var value;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        post = [{ 'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url }];
-                        return [4 /*yield*/, this.theDatabase.put(name, post)];
+                        value = [{ 'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url }];
+                        return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
