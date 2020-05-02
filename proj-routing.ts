@@ -10,7 +10,7 @@ export class ProjRouting {
 
     private server = express();
     //private port = 8080;
-    private port = process.env.PORT;
+    //private port = process.env.PORT;
     private router = express.Router();
 
     constructor(db){
@@ -52,11 +52,11 @@ export class ProjRouting {
     }
         
     private async createHandler(request, response) : Promise<void> {
+    console.log(request.params['userId']);
     await this.createUser(request.params['userId']+"-"+request.body.name, response);
     }
 
     private async readHandler(request, response): Promise<void> {
-    console.log(request.params['userId']);
     await this.readUser(request.params['userId']+"-"+request.body.name, response);
     }
 

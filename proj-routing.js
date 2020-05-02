@@ -44,7 +44,7 @@ var ProjRouting = /** @class */ (function () {
         var _this = this;
         this.server = express();
         //private port = 8080;
-        this.port = process.env.PORT;
+        //private port = process.env.PORT;
         this.router = express.Router();
         this.theDatabase = db;
         this.router.use(function (request, response, next) {
@@ -93,7 +93,9 @@ var ProjRouting = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.createUser(request.params['userId'] + "-" + request.body.name, response)];
+                    case 0:
+                        console.log(request.params['userId']);
+                        return [4 /*yield*/, this.createUser(request.params['userId'] + "-" + request.body.name, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -105,9 +107,7 @@ var ProjRouting = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        console.log(request.params['userId']);
-                        return [4 /*yield*/, this.readUser(request.params['userId'] + "-" + request.body.name, response)];
+                    case 0: return [4 /*yield*/, this.readUser(request.params['userId'] + "-" + request.body.name, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
