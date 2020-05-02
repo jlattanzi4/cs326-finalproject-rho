@@ -78,11 +78,11 @@ function postCreate(){
 		console.log(div);
 		
 		document.getElementById("makePost").after(div);
-	}
-	else{
-		document.getElementById("error_post").innerHTML = "Please enter all fields";
 		}
-	})();
+		else{
+			document.getElementById("error_post").innerHTML = "Please enter all fields";
+			}
+		})();
 }
 
 function userRead() {
