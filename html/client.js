@@ -80,6 +80,7 @@ function postCreate(){
 		document.getElementById("makePost").after(div);
 		//document.getElementById("makePost").reset();
 		var frm = document.getElementsByName("makePost")[0];
+		console.log(frm);
 		frm.reset();
 		}
 		else{
