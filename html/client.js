@@ -88,7 +88,7 @@ function postCreate(){
 }
 
 function commentCreate(){
-	(async => {
+	(async () => {
 
 		let comment = document.getElementById("comment");
 
