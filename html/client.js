@@ -99,12 +99,17 @@ function commentCreate(){
 		const resp = await postData(newURL, data);
 		const j = await resp.text();
 		
+		if(j['result'] !== 'error'){
+
 		var div = document.createElement('div');
 			div.setAttribute('class', 'card-footer');
 			div.innerHTML = `
 			<p class="card-text">${comment}</p>
-		`
-
+		`;
+		}
+		else{
+			document.getElementById("error_comment").innerHTML = "Please enter all fields";
+		}
 
 	})();
 }
