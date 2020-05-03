@@ -40,8 +40,8 @@ var Database = /** @class */ (function () {
     function Database(collectionName) {
         var _this = this;
         this.MongoClient = require('mongodb').MongoClient;
-        //private secrets = require('./secrets.json');
-        this.uri = "mongodb+srv://rho:cs326@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority";
+        this.secrets = require('secrets.json');
+        this.uri = this.secrets.uri;
         this.dbName = "ab";
         this.collectionName = collectionName;
         this.client = new this.MongoClient(this.uri, { useNewUrlParser: true });
