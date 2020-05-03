@@ -49,8 +49,8 @@ var ProjRouting = /** @class */ (function () {
         this.theDatabase = db;
         this.router.use(function (request, response, next) {
             response.header('Content-Type', 'application/json');
-            //response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/create');
-            response.header('Access-Control-Allow-Origin', '*');
+            response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/create');
+            //response.header('Access-Control-Allow-Origin', '*');
             response.header('Access-Control-Allow-Headers', '*');
             //response.header('Access-Control-Allow-Credentials');
             next();
@@ -178,14 +178,14 @@ var ProjRouting = /** @class */ (function () {
             });
         });
     };
-    ProjRouting.prototype.createPost = function (name, songTitle, postContent, url, response) {
+    ProjRouting.prototype.createPost = function (name, songTitle, postContent, youtubeUrl, response) {
         return __awaiter(this, void 0, void 0, function () {
             var value;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'url': url }];
+                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl }];
                         return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();

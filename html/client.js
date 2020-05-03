@@ -28,13 +28,13 @@ function userCreate() {
 function postCreate(){
 	(async () => {
 		let postContent = document.getElementById("postContent").value;
-		let url = document.getElementById("url").value;
+		let youtubeUrl = document.getElementById("url").value;
 		let songTitle = document.getElementById("songTitle").value;
 		let name = document.getElementById("name").value;
 		var d = new Date();
 		let timeOfPost = d.getHours() + ":" + d.getMinutes();
 
-		const data = {"postContent": postContent, "url": url, "songTitle": songTitle, "name": name, "Time": timeOfPost};
+		const data = {"postContent": postContent, "youtubeUrl": youtubeUrl, "songTitle": songTitle, "name": name, "Time": timeOfPost};
 		const newURL = url + "/posts/" + name + "/create";
 		console.log("postCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);
