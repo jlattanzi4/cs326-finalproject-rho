@@ -87,6 +87,23 @@ function postCreate(){
 		})();
 }
 
+function commentCreate(){
+	(async => {
+
+		let comment = document.getElementById("comment");
+
+		const data = {'comment': comment};
+		
+		var div = document.createElement('div');
+			div.setAttribute('class', 'card-footer');
+			div.innerHTML = `
+			<p class="card-text">${comment}</p>
+		`
+
+		
+	})();
+}
+
 function eraseText() {
 	document.getElementById("name").value = "";
 	document.getElementById("songTitle").value = "";
