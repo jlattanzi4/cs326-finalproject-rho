@@ -165,7 +165,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        value = [{ 'First Name': firstName, 'Last Name': lastName, "Username": username, "Email": email, "Password": password }];
+                        value = [{ 'firstName': firstName, 'lastName': lastName, "username": username, "email": email, "password": password }];
                         return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();
