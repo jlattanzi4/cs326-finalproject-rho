@@ -90,7 +90,7 @@ function postCreate(){
 function commentCreate(){
 	(async () => {
 
-		let comment = document.getElementById("comment");
+		let comment = document.getElementById("comment").value;
 
 		const data = {'comment': comment};
 
@@ -104,7 +104,9 @@ function commentCreate(){
 		var div = document.createElement('div');
 			div.setAttribute('class', 'card-footer');
 			div.innerHTML = `
-			<p class="card-text">${comment}</p>
+			<p class="card-text">
+				${comment}
+			</p>
 		`;
 
 		console.log(div);
