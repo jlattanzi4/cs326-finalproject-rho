@@ -90,12 +90,13 @@ function postCreate(){
 function commentCreate(){
 	(async () => {
 
+		let name = "comment_ex"
 		let comment = document.getElementById("comment").value;
 
 		const data = {'comment': comment};
 
 		const newURL = url + "/comment/" + name + "/create";
-		console.log("postCreate: fetching " + newURL);
+		console.log("commentCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);
 		const j = await resp.text();
 		
