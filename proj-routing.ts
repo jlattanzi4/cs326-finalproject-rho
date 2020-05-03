@@ -89,9 +89,9 @@ export class ProjRouting {
     response.end();
     }
 
-    public async createPost(name: string, songTitle: string, postContent: string, url: string, response) : Promise<void> {
+    public async createPost(name: string, title: string, postContent: string, link: string, response) : Promise<void> {
         console.log("creating user named '" + name + "'");
-        var value = [{'songTitle': songTitle, 'postContent': postContent, 'url': url}];
+        var value = [{'songTitle': title, 'postContent': postContent, 'url': link}];
         await this.theDatabase.put(name, value[0]);
         response.write(JSON.stringify({'result' : 'created',
                             'value' : value}));
