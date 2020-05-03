@@ -19,8 +19,8 @@ export class ProjRouting {
 
         this.router.use((request, response, next) => {
             response.header('Content-Type','application/json');
-            //response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/create');
-            response.header('Access-Control-Allow-Origin', '*');
+            response.header('Access-Control-Allow-Origin', 'https://desolate-forest-61979.herokuapp.com/create');
+            //response.header('Access-Control-Allow-Origin', '*');
             response.header('Access-Control-Allow-Headers', '*');
             //response.header('Access-Control-Allow-Credentials');
             next();
