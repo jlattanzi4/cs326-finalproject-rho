@@ -128,6 +128,10 @@ function eraseText() {
 	document.getElementById("url").value = "";
 }
 
+function eraseTextComment(){
+	document.getElementById("comment").value = ""
+}
+
 function userRead() {
     (async () => {
 	let userName = document.getElementById("username").value;
