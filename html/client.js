@@ -93,6 +93,11 @@ function commentCreate(){
 		let comment = document.getElementById("comment");
 
 		const data = {'comment': comment};
+
+		const newURL = url + "/comment/" + name + "/create";
+		console.log("postCreate: fetching " + newURL);
+		const resp = await postData(newURL, data);
+		const j = await resp.text();
 		
 		var div = document.createElement('div');
 			div.setAttribute('class', 'card-footer');
@@ -100,7 +105,7 @@ function commentCreate(){
 			<p class="card-text">${comment}</p>
 		`
 
-		
+
 	})();
 }
 

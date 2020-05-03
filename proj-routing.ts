@@ -30,6 +30,7 @@ export class ProjRouting {
         this.server.use(express.json());
         this.router.post('/users/:userId/create', this.createHandler.bind(this));
         this.router.post('/posts/:userId/create', this.createPostHandler.bind(this));
+        this.router.post('/comments/:userId/create', this.createCommentHandler.bind(this));
         this.router.post('/users/:userId/read', [this.errorHandler.bind(this),this.readHandler.bind(this)]);
         this.router.post('/users/:userId/update', [this.errorHandler.bind(this),this.updateHandler.bind(this)]);
         this.router.post('/users/:userId/delete', [this.errorHandler.bind(this),this.deleteHandler.bind(this)]);
@@ -61,6 +62,11 @@ export class ProjRouting {
         console.log(request.params['userId']);
         console.log(request.body.songTitle)
         await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response);
+    }
+
+    private async createCommentHandler(request, response): Promise<void> {
+        console.log(request.params['userId']);
+        await this.createComment(request.params['userId'], request.body.comment, response);
     }
 
     private async readHandler(request, response): Promise<void> {
@@ -97,6 +103,16 @@ export class ProjRouting {
                             'value' : value}));
         response.end();
         }
+
+
+    public async createComment(name: string, comment: string, response){
+        console.log("creating comment by '" + name + "'");
+        var value = {'comment':comment};
+        await this.theDatabase.put(name, value);
+        response.write(JSON.stringify({'result': 'created',
+                                        'value': value}));
+        response.end();
+    }
 
     public async errorUser(name: string, response) : Promise<void> {
     response.write(JSON.stringify({'result': 'error'}));
