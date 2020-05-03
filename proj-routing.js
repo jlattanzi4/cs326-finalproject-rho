@@ -96,7 +96,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log(request.params['userId']);
-                        return [4 /*yield*/, this.createUser(request.params['userId'], response)];
+                        return [4 /*yield*/, this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.userName, request.body.email, request.body.password, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -158,13 +158,15 @@ var ProjRouting = /** @class */ (function () {
     ProjRouting.prototype.listen = function (port) {
         this.server.listen(port);
     };
-    ProjRouting.prototype.createUser = function (name, response) {
+    ProjRouting.prototype.createUser = function (name, firstName, lastName, username, email, password, response) {
         return __awaiter(this, void 0, void 0, function () {
+            var value;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        return [4 /*yield*/, this.theDatabase.put(name, 'User Created')];
+                        value = [{ 'First Name': firstName, 'Last Name': lastName, "Username": username, "Email": email, "Password": password }];
+                        return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
@@ -183,8 +185,8 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        value = [{ 'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url }];
-                        return [4 /*yield*/, this.theDatabase.put(name, value)];
+                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'url': url }];
+                        return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',

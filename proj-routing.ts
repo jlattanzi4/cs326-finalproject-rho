@@ -54,7 +54,7 @@ export class ProjRouting {
         
     private async createHandler(request, response) : Promise<void> {
     console.log(request.params['userId']);
-    await this.createUser(request.params['userId'], response);
+    await this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.userName, request.body.email, request.body.password, response);
     }
 
     private async createPostHandler(request, response): Promise<void> {
@@ -79,9 +79,10 @@ export class ProjRouting {
     this.server.listen(port);
     }
 
-    public async createUser(name: string, response) : Promise<void> {
+    public async createUser(name: string, firstName: string, lastName: string, username: string, email: string, password: string, response) : Promise<void> {
     console.log("creating user named '" + name + "'");
-    await this.theDatabase.put(name, 'User Created');
+    var value = [{'First Name': firstName, 'Last Name': lastName, "Username": username, "Email": email, "Password": password}]
+    await this.theDatabase.put(name, value[0]);
     response.write(JSON.stringify({'result' : 'created',
                         'name' : name,
                         'value' : "User Created" }));
@@ -90,8 +91,8 @@ export class ProjRouting {
 
     public async createPost(name: string, songTitle: string, postContent: string, url: string, response) : Promise<void> {
         console.log("creating user named '" + name + "'");
-        var value = [{'name': name, 'songTitle': songTitle, 'postContent': postContent, 'url': url}];
-        await this.theDatabase.put(name, value);
+        var value = [{'songTitle': songTitle, 'postContent': postContent, 'url': url}];
+        await this.theDatabase.put(name, value[0]);
         response.write(JSON.stringify({'result' : 'created',
                             'value' : value}));
         response.end();
