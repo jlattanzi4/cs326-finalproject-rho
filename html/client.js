@@ -12,7 +12,7 @@ function userCreate() {
 	let password = document.getElementById("password").value;
 	
 	const data = {'username' : userName, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
-	const newURL = url + "/users/" + userName + "/create";
+	const newURL = url + "register.html/users/" + userName + "/create";
 	console.log("userCreate: fetching " + newURL);
 	const resp = await postData(newURL, data); 
 	const j = await resp.json();
