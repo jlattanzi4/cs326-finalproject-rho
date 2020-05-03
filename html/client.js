@@ -106,6 +106,11 @@ function commentCreate(){
 			div.innerHTML = `
 			<p class="card-text">${comment}</p>
 		`;
+
+		console.log(div);
+		
+		document.getElementById("comment").after(div);
+
 		}
 		else{
 			document.getElementById("error_comment").innerHTML = "Please enter all fields";
