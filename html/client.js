@@ -66,7 +66,7 @@ function postCreate(){
 					</a>
 
 					<p class="card-text">
-						${postContent}
+						${name}:	${postContent}
 						<iframe width="100%" height="315" src=${youtubeUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</p>
 				</div>

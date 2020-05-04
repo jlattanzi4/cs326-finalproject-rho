@@ -107,7 +107,7 @@ export class ProjRouting {
 
     public async createComment(name: string, comment: string, response){
         console.log("creating comment by '" + name + "'");
-        var value = {'comment':comment};
+        var value = {'comment': comment};
         await this.theDatabase.put(name, value);
         response.write(JSON.stringify({'result': 'created',
                                         'value': value}));
