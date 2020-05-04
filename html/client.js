@@ -12,7 +12,7 @@ function userCreate() {
 	let password = document.getElementById("password").value;
 	
 	const data = {'username' : username, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
-	const newURL = url + "/users/" + userName + "/create";
+	const newURL = url + "/users/" + username + "/create";
 	console.log("userCreate: fetching " + newURL);
 	const resp = await postData(newURL, data); 
 	const j = await resp.json();
@@ -139,14 +139,14 @@ function eraseTextComment(){
 
 function userRead() {
     (async () => {
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	let firstName = document.getElementById("firstName").value;
 	let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
 
-	const data = {'name' : userName, 'First Name': firstName, 'Last Name': lastName, 'Email': email, "Password": password};
-	const newURL = url + "/users/" + userName + "/read";
+	const data = {'name' : username, 'First Name': firstName, 'Last Name': lastName, 'Email': email, "Password": password};
+	const newURL = url + "/users/" + username + "/read";
 	console.log("counterRead: fetching " + newURL);
 	const resp = await postData(newURL, data);  
 	const j = await resp.json();
@@ -154,7 +154,7 @@ function userRead() {
 	if (j['result'] !== 'error') {
 	    document.getElementById("output").innerHTML = "201: <b>" + user + "</b>";
 	} else {
-	    document.getElementById("output").innerHTML = "200: " +  userName + ", " + counterName + " not found.</b>";
+	    document.getElementById("output").innerHTML = "200: " +  username + ", " + counterName + " not found.</b>";
 	}
 	})();
 }
@@ -162,19 +162,19 @@ function userRead() {
 function counterUpdate() {
     (async () => {
 	let counterName = document.getElementById("countername").value;
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	let counterValue = document.getElementById("countervalue").value;
 	
 	
 	const data = { 'name' : counterName, 'value': counterValue}; // -- (1)
-	const newURL = url + "/users/" + userName + "/update"; // used to be ?name=" + counterName; -- (2)
+	const newURL = url + "/users/" + username + "/update"; // used to be ?name=" + counterName; -- (2)
 	console.log("counterUpdate: fetching " + newURL);
 	const resp = await postData(newURL, data); // used to be fetch -- (3)
 	const j = await resp.json();
 	if (j['result'] !== 'error') {
-	    document.getElementById("output").innerHTML = "301: <b>" + userName + ", " + counterName + " value = " + j['value'] + "</b>";
+	    document.getElementById("output").innerHTML = "301: <b>" + username + ", " + counterName + " value = " + j['value'] + "</b>";
 	} else {
-	    document.getElementById("output").innerHTML = "300: " + userName + ", " + counterName + " not found.";
+	    document.getElementById("output").innerHTML = "300: " + username + ", " + counterName + " not found.";
 	}	    
     })();
 }
@@ -182,18 +182,18 @@ function counterUpdate() {
 function counterDelete() {
     (async () => {
 	let counterName = document.getElementById("countername").value;
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	
 	
 	const data = { 'name' : counterName }; // -- (1)
-	const newURL = url + "/users/" + userName + "/delete"; // used to be ?name=" + counterName; -- (2)
+	const newURL = url + "/users/" + username + "/delete"; // used to be ?name=" + counterName; -- (2)
 	console.log("counterDelete: fetching " + newURL);
 	const resp = await postData(newURL, data); // used to be fetch -- (3)
 	const j = await resp.json();
 	if (j['result'] !== 'error') {
-	    document.getElementById("output").innerHTML = "401: <b>" + userName + ", " + counterName + " deleted.</b>";
+	    document.getElementById("output").innerHTML = "401: <b>" + username + ", " + counterName + " deleted.</b>";
 	} else {
-	    document.getElementById("output").innerHTML = "400: " + userName + ", " + counterName + " not found.</b>";
+	    document.getElementById("output").innerHTML = "400: " + username + ", " + counterName + " not found.</b>";
 	}	  
     })();
 }
