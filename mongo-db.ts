@@ -1,8 +1,7 @@
 export class Database {
 
     private MongoClient = require('mongodb').MongoClient;
-    //private secrets = require('secrets.json');
-    private uri = "mongodb+srv://rho:audiobooth@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority";
+    private uri = process.env.MONGO_KEY;
     private client;
     private collectionName : string; // do i need something here
     private dbName : string = "ab";
