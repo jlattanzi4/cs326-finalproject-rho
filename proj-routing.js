@@ -59,7 +59,7 @@ var ProjRouting = /** @class */ (function () {
         this.server.use(express.json());
         this.router.post('/users/:userId/create', this.createHandler.bind(this));
         this.router.post('/posts/:userId/create', this.createPostHandler.bind(this));
-        this.router.post('/comments/:userId/create', this.createCommentHandler.bind(this));
+        this.router.post('/comment/:userId/create', this.createCommentHandler.bind(this));
         this.router.post('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
         this.router.post('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
         this.router.post('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
