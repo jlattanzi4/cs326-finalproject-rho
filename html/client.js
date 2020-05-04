@@ -52,8 +52,8 @@ function postCreate(){
 								<img class="rounded-circle" width="45" src="images/profilephoto.png" alt="">
 							</div>
 							<div class="ml-2">
-								<div class="h5 m-0">@username</div>
-								<div class="h7 text-muted">${name}</div>
+								<div class="h5 m-0" id="posterName">${name}</div>
+								<div class="h7 text-muted">$@username</div>
 							</div>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ function postCreate(){
 					</a>
 
 					<p class="card-text">
-						${name}:	${postContent}
+						${postContent}
 						<iframe width="100%" height="315" src=${youtubeUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</p>
 				</div>
@@ -95,7 +95,7 @@ function postCreate(){
 function commentCreate(){
 	(async () => {
 
-		let name = "comment_ex"
+		let name = document.getElementById("posterName").value;
 		let comment = document.getElementById("comment").value;
 
 		const data = {'comment': comment};
