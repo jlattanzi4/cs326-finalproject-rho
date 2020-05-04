@@ -55,7 +55,7 @@ export class ProjRouting {
         
     private async createHandler(request, response) : Promise<void> {
     console.log(request.params['userId']);
-    await this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.userName, request.body.email, request.body.password, response);
+    await this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.username, request.body.email, request.body.password, response);
     }
 
     private async createPostHandler(request, response): Promise<void> {
@@ -91,7 +91,7 @@ export class ProjRouting {
     await this.theDatabase.put(name, value[0]);
     response.write(JSON.stringify({'result' : 'created',
                         'name' : name,
-                        'value' : "User Created" }));
+                        'info' : value }));
     response.end();
     }
 
@@ -100,7 +100,7 @@ export class ProjRouting {
         var value = [{'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl, 'comment': comment}];
         await this.theDatabase.put(name, value[0]);
         response.write(JSON.stringify({'result' : 'created',
-                            'value' : value}));
+                            'post' : value}));
         response.end();
         }
 

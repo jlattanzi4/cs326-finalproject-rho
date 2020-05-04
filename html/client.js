@@ -5,14 +5,14 @@ const url = "https://desolate-forest-61979.herokuapp.com/counter";
 
 function userCreate() {
     (async () => {
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	let firstName = document.getElementById("firstName").value;
 	let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
 	
 	const data = {'username' : userName, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
-	const newURL = url + "register.html/users/" + userName + "/create";
+	const newURL = url + "/users/" + userName + "/create";
 	console.log("userCreate: fetching " + newURL);
 	const resp = await postData(newURL, data); 
 	const j = await resp.json();

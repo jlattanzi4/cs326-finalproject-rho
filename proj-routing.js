@@ -97,7 +97,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log(request.params['userId']);
-                        return [4 /*yield*/, this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.userName, request.body.email, request.body.password, response)];
+                        return [4 /*yield*/, this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.username, request.body.email, request.body.password, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -186,7 +186,7 @@ var ProjRouting = /** @class */ (function () {
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
                             'name': name,
-                            'value': "User Created" }));
+                            'info': value }));
                         response.end();
                         return [2 /*return*/];
                 }
@@ -205,7 +205,7 @@ var ProjRouting = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
-                            'value': value }));
+                            'post': value }));
                         response.end();
                         return [2 /*return*/];
                 }
