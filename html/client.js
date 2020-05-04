@@ -98,7 +98,7 @@ function commentCreate(){
 		let name = document.getElementById("posterName").value;
 		let comment = document.getElementById("comment").value;
 
-		const data = {'comment': comment};
+		const data = {'name': name, 'comment': comment};
 
 		const newURL = url + "/comment/" + name + "/create";
 		console.log("commentCreate: fetching " + newURL);
