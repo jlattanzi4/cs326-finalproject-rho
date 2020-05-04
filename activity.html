@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Activity Page</title>
+    <meta charset="utf-8">  
+</head>
+
+<body>
+    <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gbxxpSNE5o4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div id="respond">
+
+        <h3>Leave a Comment</h3>
+      
+        <form action="post_comment.php" method="post" id="commentform">
+      
+          <label for="comment_author" class="required">Your name</label>
+          <input type="text" name="comment_author" id="comment_author" value="" tabindex="1" required="required">
+      
+          <label for="email" class="required">Your email;</label>
+          <input type="email" name="email" id="email" value="" tabindex="2" required="required">
+      
+          <label for="comment" class="required">Your message</label>
+          <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+      
+          <!-- comment_post_ID value hard-coded as 1 -->
+          <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+          <input name="submit" type="submit" value="Submit comment" />
+      
+        </form>
+      
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
