@@ -74,6 +74,11 @@ function postCreate(){
 					<a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
 					<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 				</div>
+				<div class="card-footer">
+					<textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Give your thoughts!"></textarea>
+					<button type="button" onclick="commentCreate(); eraseTextComment();" class="btn btn-primary">Comment</button>
+					<p class="error_comment"></p>
+				</div>
 			`;
 
 		console.log(div);
@@ -109,9 +114,7 @@ function commentCreate(){
 				${comment}
 			</p>
 		`;
-
 		console.log(div);
-		
 		document.getElementById("comment").after(div);
 
 		}
