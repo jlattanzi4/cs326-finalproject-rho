@@ -53,7 +53,7 @@ function postCreate(){
 							</div>
 							<div class="ml-2">
 								<div class="h5 m-0" id="posterName">${name}</div>
-								<div class="h7 text-muted">$@username</div>
+								<div class="h7 text-muted">@username</div>
 							</div>
 						</div>
 					</div>
@@ -95,10 +95,10 @@ function postCreate(){
 function commentCreate(){
 	(async () => {
 
-		let name = document.getElementById("posterName").value;
+		let name = document.getElementById("posterName").innerHTML;
 		let comment = document.getElementById("comment").value;
 
-		const data = {'name': name, 'comment': comment};
+		const data = {"name": name, "comment": comment};
 
 		const newURL = url + "/comment/" + name + "/create";
 		console.log("commentCreate: fetching " + newURL);
