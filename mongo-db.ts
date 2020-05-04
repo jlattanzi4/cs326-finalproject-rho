@@ -24,6 +24,14 @@ export class Database {
         console.log("result = " + result);
     }
 
+    public async update(key: string, value: string): Promise<void>{
+        console.log("update: key = " + key + ", value = " + value);
+        let db = this.client.db(this.dbName);
+        let collection = db.collection(this.collectionName);
+        let result = await collection.findOneAndUpdate({'name': key}, { $set : {'comment' : value}});
+        console.log("result = " + result);
+    }
+
     public async get(key: string) : Promise<string> {
 
         let db = this.client.db(this.dbName);

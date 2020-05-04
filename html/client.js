@@ -33,8 +33,9 @@ function postCreate(){
 		let name = document.getElementById("name").value;
 		var d = new Date();
 		let timeOfPost = d.getHours() + ":" + d.getMinutes();
+		let comment = null;
 
-		const data = {"postContent": postContent, "youtubeUrl": youtubeUrl, "songTitle": songTitle, "name": name, "Time": timeOfPost};
+		const data = {"postContent": postContent, "youtubeUrl": youtubeUrl, "songTitle": songTitle, "name": name, "Time": timeOfPost, "Comment": comment};
 		const newURL = url + "/posts/" + name + "/create";
 		console.log("postCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);

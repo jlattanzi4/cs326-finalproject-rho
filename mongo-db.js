@@ -73,6 +73,24 @@ var Database = /** @class */ (function () {
             });
         });
     };
+    Database.prototype.update = function (key, value) {
+        return __awaiter(this, void 0, void 0, function () {
+            var db, collection, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log("update: key = " + key + ", value = " + value);
+                        db = this.client.db(this.dbName);
+                        collection = db.collection(this.collectionName);
+                        return [4 /*yield*/, collection.findOneAndUpdate({ 'name': key }, { $set: { 'comment': value } })];
+                    case 1:
+                        result = _a.sent();
+                        console.log("result = " + result);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     Database.prototype.get = function (key) {
         return __awaiter(this, void 0, void 0, function () {
             var db, collection, result;

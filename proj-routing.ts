@@ -61,7 +61,7 @@ export class ProjRouting {
     private async createPostHandler(request, response): Promise<void> {
         console.log(request.params['userId']);
         console.log(request.body.songTitle)
-        await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response);
+        await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, request.body.comment, response);
     }
 
     private async createCommentHandler(request, response): Promise<void> {
@@ -95,9 +95,9 @@ export class ProjRouting {
     response.end();
     }
 
-    public async createPost(name: string, songTitle: string, postContent: string, youtubeUrl: string, response) : Promise<void> {
+    public async createPost(name: string, songTitle: string, postContent: string, youtubeUrl: string, comment: string, response) : Promise<void> {
         console.log("creating user named '" + name + "'");
-        var value = [{'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl}];
+        var value = [{'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl, 'comment': comment}];
         await this.theDatabase.put(name, value[0]);
         response.write(JSON.stringify({'result' : 'created',
                             'value' : value}));
@@ -105,10 +105,10 @@ export class ProjRouting {
         }
 
 
-    public async createComment(name: string, comment: string, response){
+    public async createComment(name: string, comment: string, response) : Promise<void> {
         console.log("creating comment by '" + name + "'");
         var com = {'comment': comment};
-        await this.theDatabase.put(name, com);
+        await this.theDatabase.update(name, com);
         response.write(JSON.stringify({'result': 'created',
                                         'com': com}));
         response.end();

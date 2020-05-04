@@ -112,7 +112,7 @@ var ProjRouting = /** @class */ (function () {
                     case 0:
                         console.log(request.params['userId']);
                         console.log(request.body.songTitle);
-                        return [4 /*yield*/, this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response)];
+                        return [4 /*yield*/, this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, request.body.comment, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -193,14 +193,14 @@ var ProjRouting = /** @class */ (function () {
             });
         });
     };
-    ProjRouting.prototype.createPost = function (name, songTitle, postContent, youtubeUrl, response) {
+    ProjRouting.prototype.createPost = function (name, songTitle, postContent, youtubeUrl, comment, response) {
         return __awaiter(this, void 0, void 0, function () {
             var value;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl }];
+                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl, 'comment': comment }];
                         return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();
@@ -220,7 +220,7 @@ var ProjRouting = /** @class */ (function () {
                     case 0:
                         console.log("creating comment by '" + name + "'");
                         com = { 'comment': comment };
-                        return [4 /*yield*/, this.theDatabase.put(name, com)];
+                        return [4 /*yield*/, this.theDatabase.update(name, com)];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
