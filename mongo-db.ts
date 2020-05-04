@@ -1,10 +1,9 @@
 export class Database {
 
     private MongoClient = require('mongodb').MongoClient;
-    //private secrets = require('secrets.json');
-    private uri = "mongodb+srv://rho:audiobooth@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority";
+    private uri = process.env.MONGO_KEY;
     private client;
-    private collectionName : string; // do i need something here
+    private collectionName : string;
     private dbName : string = "ab";
 
 
@@ -22,6 +21,14 @@ export class Database {
         let db = this.client.db(this.dbName);
         let collection = db.collection(this.collectionName);
         let result = await collection.updateOne({'name' : key}, { $set : {'value' : value} }, { 'upsert' : true } );
+        console.log("result = " + result);
+    }
+
+    public async update(key: string, value: string): Promise<void>{
+        console.log("update: key = " + key + ", value = " + value);
+        let db = this.client.db(this.dbName);
+        let collection = db.collection(this.collectionName);
+        let result = await collection.findOneAndUpdate({'name': key}, { $set : {'comment' : value}});
         console.log("result = " + result);
     }
 

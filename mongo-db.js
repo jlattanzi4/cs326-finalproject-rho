@@ -40,8 +40,7 @@ var Database = /** @class */ (function () {
     function Database(collectionName) {
         var _this = this;
         this.MongoClient = require('mongodb').MongoClient;
-        //private secrets = require('secrets.json');
-        this.uri = "mongodb+srv://rho:audiobooth@cluster0-sfoqe.mongodb.net/test?retryWrites=true&w=majority";
+        this.uri = process.env.MONGO_KEY;
         this.dbName = "ab";
         this.collectionName = collectionName;
         this.client = new this.MongoClient(this.uri, { useNewUrlParser: true });
@@ -66,6 +65,24 @@ var Database = /** @class */ (function () {
                         db = this.client.db(this.dbName);
                         collection = db.collection(this.collectionName);
                         return [4 /*yield*/, collection.updateOne({ 'name': key }, { $set: { 'value': value } }, { 'upsert': true })];
+                    case 1:
+                        result = _a.sent();
+                        console.log("result = " + result);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Database.prototype.update = function (key, value) {
+        return __awaiter(this, void 0, void 0, function () {
+            var db, collection, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log("update: key = " + key + ", value = " + value);
+                        db = this.client.db(this.dbName);
+                        collection = db.collection(this.collectionName);
+                        return [4 /*yield*/, collection.findOneAndUpdate({ 'name': key }, { $set: { 'comment': value } })];
                     case 1:
                         result = _a.sent();
                         console.log("result = " + result);

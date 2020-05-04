@@ -30,7 +30,7 @@ export class ProjRouting {
         this.server.use(express.json());
         this.router.post('/users/:userId/create', this.createHandler.bind(this));
         this.router.post('/posts/:userId/create', this.createPostHandler.bind(this));
-        this.router.post('/comments/:userId/create', this.createCommentHandler.bind(this));
+        this.router.post('/comment/:userId/create', this.createCommentHandler.bind(this));
         this.router.post('/users/:userId/read', [this.errorHandler.bind(this),this.readHandler.bind(this)]);
         this.router.post('/users/:userId/update', [this.errorHandler.bind(this),this.updateHandler.bind(this)]);
         this.router.post('/users/:userId/delete', [this.errorHandler.bind(this),this.deleteHandler.bind(this)]);
@@ -55,13 +55,13 @@ export class ProjRouting {
         
     private async createHandler(request, response) : Promise<void> {
     console.log(request.params['userId']);
-    await this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.userName, request.body.email, request.body.password, response);
+    await this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.username, request.body.email, request.body.password, response);
     }
 
     private async createPostHandler(request, response): Promise<void> {
         console.log(request.params['userId']);
         console.log(request.body.songTitle)
-        await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response);
+        await this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, request.body.comment, response);
     }
 
     private async createCommentHandler(request, response): Promise<void> {
@@ -91,26 +91,26 @@ export class ProjRouting {
     await this.theDatabase.put(name, value[0]);
     response.write(JSON.stringify({'result' : 'created',
                         'name' : name,
-                        'value' : "User Created" }));
+                        'info' : value }));
     response.end();
     }
 
-    public async createPost(name: string, songTitle: string, postContent: string, youtubeUrl: string, response) : Promise<void> {
+    public async createPost(name: string, songTitle: string, postContent: string, youtubeUrl: string, comment: string, response) : Promise<void> {
         console.log("creating user named '" + name + "'");
-        var value = [{'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl}];
+        var value = [{'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl, 'comment': comment}];
         await this.theDatabase.put(name, value[0]);
         response.write(JSON.stringify({'result' : 'created',
-                            'value' : value}));
+                            'post' : value}));
         response.end();
         }
 
 
-    public async createComment(name: string, comment: string, response){
+    public async createComment(name: string, comment: string, response) : Promise<void> {
         console.log("creating comment by '" + name + "'");
-        var value = {'comment':comment};
-        await this.theDatabase.put(name, value);
+        var com = {'comment': comment};
+        await this.theDatabase.update(name, com);
         response.write(JSON.stringify({'result': 'created',
-                                        'value': value}));
+                                        'com': com}));
         response.end();
     }
 

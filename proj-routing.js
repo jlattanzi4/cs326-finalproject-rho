@@ -59,7 +59,7 @@ var ProjRouting = /** @class */ (function () {
         this.server.use(express.json());
         this.router.post('/users/:userId/create', this.createHandler.bind(this));
         this.router.post('/posts/:userId/create', this.createPostHandler.bind(this));
-        this.router.post('/comments/:userId/create', this.createCommentHandler.bind(this));
+        this.router.post('/comment/:userId/create', this.createCommentHandler.bind(this));
         this.router.post('/users/:userId/read', [this.errorHandler.bind(this), this.readHandler.bind(this)]);
         this.router.post('/users/:userId/update', [this.errorHandler.bind(this), this.updateHandler.bind(this)]);
         this.router.post('/users/:userId/delete', [this.errorHandler.bind(this), this.deleteHandler.bind(this)]);
@@ -97,7 +97,7 @@ var ProjRouting = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log(request.params['userId']);
-                        return [4 /*yield*/, this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.userName, request.body.email, request.body.password, response)];
+                        return [4 /*yield*/, this.createUser(request.params['userId'], request.body.firstName, request.body.lastName, request.body.username, request.body.email, request.body.password, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -112,7 +112,7 @@ var ProjRouting = /** @class */ (function () {
                     case 0:
                         console.log(request.params['userId']);
                         console.log(request.body.songTitle);
-                        return [4 /*yield*/, this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, response)];
+                        return [4 /*yield*/, this.createPost(request.params['userId'], request.body.songTitle, request.body.postContent, request.body.youtubeUrl, request.body.comment, response)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -186,26 +186,26 @@ var ProjRouting = /** @class */ (function () {
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
                             'name': name,
-                            'value': "User Created" }));
+                            'info': value }));
                         response.end();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    ProjRouting.prototype.createPost = function (name, songTitle, postContent, youtubeUrl, response) {
+    ProjRouting.prototype.createPost = function (name, songTitle, postContent, youtubeUrl, comment, response) {
         return __awaiter(this, void 0, void 0, function () {
             var value;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating user named '" + name + "'");
-                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl }];
+                        value = [{ 'songTitle': songTitle, 'postContent': postContent, 'youtubeUrl': youtubeUrl, 'comment': comment }];
                         return [4 /*yield*/, this.theDatabase.put(name, value[0])];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
-                            'value': value }));
+                            'post': value }));
                         response.end();
                         return [2 /*return*/];
                 }
@@ -214,17 +214,17 @@ var ProjRouting = /** @class */ (function () {
     };
     ProjRouting.prototype.createComment = function (name, comment, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var value;
+            var com;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating comment by '" + name + "'");
-                        value = { 'comment': comment };
-                        return [4 /*yield*/, this.theDatabase.put(name, value)];
+                        com = { 'comment': comment };
+                        return [4 /*yield*/, this.theDatabase.update(name, com)];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
-                            'value': value }));
+                            'com': com }));
                         response.end();
                         return [2 /*return*/];
                 }

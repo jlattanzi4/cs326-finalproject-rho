@@ -5,14 +5,14 @@ const url = "https://desolate-forest-61979.herokuapp.com/counter";
 
 function userCreate() {
     (async () => {
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	let firstName = document.getElementById("firstName").value;
 	let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
 	
-	const data = {'username' : userName, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
-	const newURL = url + "register.html/users/" + userName + "/create";
+	const data = {'username' : username, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
+	const newURL = url + "/users/" + username + "/create";
 	console.log("userCreate: fetching " + newURL);
 	const resp = await postData(newURL, data); 
 	const j = await resp.json();
@@ -33,8 +33,9 @@ function postCreate(){
 		let name = document.getElementById("name").value;
 		var d = new Date();
 		let timeOfPost = d.getHours() + ":" + d.getMinutes();
+		let comment = null;
 
-		const data = {"postContent": postContent, "youtubeUrl": youtubeUrl, "songTitle": songTitle, "name": name, "Time": timeOfPost};
+		const data = {"postContent": postContent, "youtubeUrl": youtubeUrl, "songTitle": songTitle, "name": name, "Time": timeOfPost, "Comment": comment};
 		const newURL = url + "/posts/" + name + "/create";
 		console.log("postCreate: fetching " + newURL);
 		const resp = await postData(newURL, data);
@@ -52,8 +53,8 @@ function postCreate(){
 								<img class="rounded-circle" width="45" src="images/profilephoto.png" alt="">
 							</div>
 							<div class="ml-2">
-								<div class="h5 m-0">@username</div>
-								<div class="h7 text-muted">${name}</div>
+								<div class="h5 m-0" id="posterName">${name}</div>
+								<div class="h7 text-muted">@username</div>
 							</div>
 						</div>
 					</div>
@@ -74,6 +75,11 @@ function postCreate(){
 					<a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
 					<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 				</div>
+				<div class="card-footer">
+					<textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Give your thoughts!"></textarea>
+					<button type="button" onclick="commentCreate(); eraseTextComment();" class="btn btn-primary">Comment</button>
+					<p class="error_comment"></p>
+				</div>
 			`;
 
 		console.log(div);
@@ -90,10 +96,10 @@ function postCreate(){
 function commentCreate(){
 	(async () => {
 
-		let name = "comment_ex"
+		let name = document.getElementById("posterName").innerHTML;
 		let comment = document.getElementById("comment").value;
 
-		const data = {'comment': comment};
+		const data = {"name": name, "comment": comment};
 
 		const newURL = url + "/comment/" + name + "/create";
 		console.log("commentCreate: fetching " + newURL);
@@ -109,9 +115,7 @@ function commentCreate(){
 				${comment}
 			</p>
 		`;
-
 		console.log(div);
-		
 		document.getElementById("comment").after(div);
 
 		}
@@ -135,14 +139,14 @@ function eraseTextComment(){
 
 function userRead() {
     (async () => {
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	let firstName = document.getElementById("firstName").value;
 	let lastName = document.getElementById("lastName").value;
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
 
-	const data = {'name' : userName, 'First Name': firstName, 'Last Name': lastName, 'Email': email, "Password": password};
-	const newURL = url + "/users/" + userName + "/read";
+	const data = {'name' : username, 'First Name': firstName, 'Last Name': lastName, 'Email': email, "Password": password};
+	const newURL = url + "/users/" + username + "/read";
 	console.log("counterRead: fetching " + newURL);
 	const resp = await postData(newURL, data);  
 	const j = await resp.json();
@@ -150,7 +154,7 @@ function userRead() {
 	if (j['result'] !== 'error') {
 	    document.getElementById("output").innerHTML = "201: <b>" + user + "</b>";
 	} else {
-	    document.getElementById("output").innerHTML = "200: " +  userName + ", " + counterName + " not found.</b>";
+	    document.getElementById("output").innerHTML = "200: " +  username + ", " + counterName + " not found.</b>";
 	}
 	})();
 }
@@ -158,19 +162,19 @@ function userRead() {
 function counterUpdate() {
     (async () => {
 	let counterName = document.getElementById("countername").value;
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	let counterValue = document.getElementById("countervalue").value;
 	
 	
 	const data = { 'name' : counterName, 'value': counterValue}; // -- (1)
-	const newURL = url + "/users/" + userName + "/update"; // used to be ?name=" + counterName; -- (2)
+	const newURL = url + "/users/" + username + "/update"; // used to be ?name=" + counterName; -- (2)
 	console.log("counterUpdate: fetching " + newURL);
 	const resp = await postData(newURL, data); // used to be fetch -- (3)
 	const j = await resp.json();
 	if (j['result'] !== 'error') {
-	    document.getElementById("output").innerHTML = "301: <b>" + userName + ", " + counterName + " value = " + j['value'] + "</b>";
+	    document.getElementById("output").innerHTML = "301: <b>" + username + ", " + counterName + " value = " + j['value'] + "</b>";
 	} else {
-	    document.getElementById("output").innerHTML = "300: " + userName + ", " + counterName + " not found.";
+	    document.getElementById("output").innerHTML = "300: " + username + ", " + counterName + " not found.";
 	}	    
     })();
 }
@@ -178,18 +182,18 @@ function counterUpdate() {
 function counterDelete() {
     (async () => {
 	let counterName = document.getElementById("countername").value;
-	let userName = document.getElementById("username").value;
+	let username = document.getElementById("username").value;
 	
 	
 	const data = { 'name' : counterName }; // -- (1)
-	const newURL = url + "/users/" + userName + "/delete"; // used to be ?name=" + counterName; -- (2)
+	const newURL = url + "/users/" + username + "/delete"; // used to be ?name=" + counterName; -- (2)
 	console.log("counterDelete: fetching " + newURL);
 	const resp = await postData(newURL, data); // used to be fetch -- (3)
 	const j = await resp.json();
 	if (j['result'] !== 'error') {
-	    document.getElementById("output").innerHTML = "401: <b>" + userName + ", " + counterName + " deleted.</b>";
+	    document.getElementById("output").innerHTML = "401: <b>" + username + ", " + counterName + " deleted.</b>";
 	} else {
-	    document.getElementById("output").innerHTML = "400: " + userName + ", " + counterName + " not found.</b>";
+	    document.getElementById("output").innerHTML = "400: " + username + ", " + counterName + " not found.</b>";
 	}	  
     })();
 }

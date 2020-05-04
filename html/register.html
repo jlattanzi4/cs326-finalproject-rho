@@ -12,7 +12,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="./client.js"></script>
-
     </head>
 
     <body>
@@ -21,10 +20,10 @@
                 <div class="col-md-4 col-sm-4 colxs-12"></div>
                 <div class="col-md-4 col-sm-4 colxs-12">
                     <!--form start-->
-                    <form class="form-container" action="index.html">
+                    <form class="form-container">
 
                         <h1>Create An Account</h1>
-                        <div class="form-group">
+                        <div class="form-group" action="index.html">
                             <label for="exmapleFirstName1">First Name</label>
                             <input type="text" class="form-control" id="firstName" placeholder="First">
                         </div>
@@ -34,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exmapleLastName1">Username</label>
-                            <input type="text" class="form-control" id="userName" placeholder="Username">
+                            <input type="text" class="form-control" id="username" placeholder="Username">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
@@ -45,7 +44,8 @@
                           <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
                         <div>                        
-                            <button type="submit" onclick ="userCreate()" class="btn btn-success btn-block">Create Account</button>
+                            <button type="button" onclick="userCreate()" class="btn btn-success btn-block">Create Account</button>
+                            <button type="submit" class="btn btn-primary">Go to the Home Page</button>
                         </div>
                         <div>
                             <p id="output"></p>
