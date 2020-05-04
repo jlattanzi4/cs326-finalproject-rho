@@ -214,17 +214,17 @@ var ProjRouting = /** @class */ (function () {
     };
     ProjRouting.prototype.createComment = function (name, comment, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var value;
+            var com;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("creating comment by '" + name + "'");
-                        value = { 'comment': comment };
-                        return [4 /*yield*/, this.theDatabase.put(name, value)];
+                        com = { 'comment': comment };
+                        return [4 /*yield*/, this.theDatabase.put(name, com)];
                     case 1:
                         _a.sent();
                         response.write(JSON.stringify({ 'result': 'created',
-                            'value': value }));
+                            'com': com }));
                         response.end();
                         return [2 /*return*/];
                 }
