@@ -11,7 +11,7 @@ function userCreate() {
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
 	
-	const data = {'username' : userName, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
+	const data = {'username' : username, 'firstName': firstName, 'lastName': lastName, 'email': email, "password": password};
 	const newURL = url + "/users/" + userName + "/create";
 	console.log("userCreate: fetching " + newURL);
 	const resp = await postData(newURL, data); 
