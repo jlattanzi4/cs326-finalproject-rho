@@ -40,3 +40,23 @@ The second of these collections are 'Posts'. There is a form on the home page wh
  - Comment : string
 
 
+
+### Division of Labor for Mileston 3
+Joe Lattanzi:
+- Creating the database
+- Linking the database
+- Implementation of client side functions
+- Implementation of routing
+- Rendering of new data on the html page
+- Creating milestone 3 markdown file
+- Testing database functionality and structure
+- Implementing secrets and configuration variables
+- Adding new database functions
+
+Patrick Goss:
+- Creating the collections document
+- Collaborating on testing database functionality and structure
+
+Jack Eberhardt:
+- Creating the setup markdown document
+- Collaborating on testing of client side functions
