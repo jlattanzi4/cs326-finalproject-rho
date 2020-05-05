@@ -1,6 +1,7 @@
 {
   "name": "cs326-finalproject-rho",
   "version": "1.0.0",
+  "description": "",
   "main": "proj-routing.js",
   "directories": {
     "doc": "docs"
@@ -28,6 +29,5 @@
     "mongoose": "^5.9.11",
     "typescript": "^3.8.3"
   },
-  "devDependencies": {},
-  "description": ""
+  "devDependencies": {}
 }
